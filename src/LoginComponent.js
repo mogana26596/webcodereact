@@ -18,7 +18,7 @@ function LoginComponent () {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            var response = await axios.post("https://hackathonnode.onrender.com/register/signin", {
+            var response = await axios.post("https://hackthon1.herokuapp.com/register/signin", {
                ...formData,
             });
             if(response.data) {
