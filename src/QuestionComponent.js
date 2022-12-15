@@ -2,8 +2,15 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';  
 import {Nav, Navbar,Form, Button, Container} from 'react-bootstrap';  
+import {useNavigate} from 'react-router-dom';
 
 function QuestionComponent() {
+  const navigate = useNavigate();
+
+  const logout = async () => {
+    await localStorage.removeItem("token");
+    navigate('/')
+}
 return(
 <span>
 
@@ -25,8 +32,8 @@ return(
               aria-label="Search"
               style={{marginLeft:"15px", marginRight:"10px", width:"700px", height:"40px" }}
             />
-           <Button variant="outline-primary" style={{marginLeft:"10px",marginRight:"10px"}}>Log in</Button>
-            <Button variant="primary"style={{marginLeft:"10px",marginRight:"10px"}}>Sign up</Button>
+           <Button variant="outline-primary" style={{marginLeft:"10px",marginRight:"10px"}} onClick={logout}>Log out</Button>
+          
          </Form>
          </Container>
 </Navbar>
@@ -38,7 +45,6 @@ return(
     <li style={{listStyleType:"none",margin:"10px", fontSize:"14px"}} >PUBLIC</li>
        <Nav.Link style={{margin:"10px", fontSize:"14px"}} href="/question"><i class="fa fa-globe fa-1x" aria-hidden="true"></i>  Questions</Nav.Link>
        <Nav.Link style={{marginTop:"10px",marginBottom:"10px",marginLeft:"30px", fontSize:"14px"}} href="/tag">Tags</Nav.Link>
-       <Nav.Link style={{marginTop:"10px",marginBottom:"10px",marginLeft:"30px", fontSize:"14px"}} href="/user">Users</Nav.Link>
        <Nav.Link style={{marginTop:"10px",marginBottom:"20px",marginLeft:"30px", fontSize:"14px"}} href="/companies">Companies</Nav.Link>
     <li style={{listStyleType:"none",margin:"10px", fontSize:"14px"}} >COLLECTIVES</li>
        <Nav.Link style={{margin:"10px", fontSize:"14px"}}>Explore Collectives</Nav.Link>
